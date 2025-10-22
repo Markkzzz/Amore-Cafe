@@ -1,136 +1,137 @@
 /* --- Global Reset & Font --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Poppins', sans-serif; /* ginagamit ang Poppins font mula sa Google Fonts */
-  margin: 0; /* tinatanggal ang default margin ng browser */
-  padding: 0; /* tinatanggal ang default padding ng browser */
-  box-sizing: border-box; /* para ang padding at border ay maisama sa total width/height ng element */
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-
 /* --- Navbar --- */
 nav {
-  width: 180vh; /* ginagawa ang lapad ng navbar na 210 viewport height units (medyo mali ito — dapat 100vw kung gusto mo full width) */
-  background-color: #000000; /* itim ang background ng navbar */
-  padding: 20px 80px; /* nagbibigay ng espasyo sa loob — 20px top-bottom, 50px left-right */
-  display: flex; /* ginagamit ang flexbox layout para madaling i-align ang items */
-  justify-content: space-between; /* inilalagay ang logo sa kaliwa at nav links sa kanan */
-  align-items: center; /* itinatama sa gitna (vertically centered) ang mga item sa loob */
-  position: fixed; /* nakapirmi ang navbar kahit mag scroll down */
-  top: 0; /* nilalagay sa pinaka-itaas ng page */
-  left: 0; /* nilalagay sa pinakakaliwa ng page */
-  z-index: 1000; /* pinapauna sa lahat ng elements sa layer order */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* nagbibigay ng mahinang shadow sa ilalim ng navbar */
+  width: 100vw; /* full width of viewport */
+  background-color: #000000;
+  padding: 20px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Logo --- */
 .logo {
-  font-size: 1.5rem; /* laki ng font ng logo */
-  font-weight: 700; /* kapal ng font (bold) */
-  color: #ec8806; /* kulay ng logo (coffee brown/orange) */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ec8806;
 }
 
-/* --- Navigation Links (ul + li + a) --- */
 .nav-links {
-  list-style: none; /* tinatanggal ang bullet points ng list */
-  display: flex; /* ginagamit ulit ang flex layout para horizontal ang links */
-  gap: 30px; /* puwang sa pagitan ng bawat link */
-  margin: 0; /* tinatanggal ang default margin ng ul */
-  padding: 0; /* tinatanggal ang default padding ng ul */
+  list-style: none;
+  display: flex;
+  gap: 30px;
 }
 
 .nav-links li a {
-  text-decoration: none; /* tinatanggal ang underline ng links */
-  color: #9c9999; /* kulay ng text ng links (gray) */
-  font-weight: 500; /* medyo bold ang weight ng font */
-  transition: color 0.4s ease, transform 0.3s ease; /* smooth transition kapag nag-hover sa link */
+  text-decoration: none;
+  color: #9c9999;
+  font-weight: 500;
+  transition: color 0.4s ease, transform 0.3s ease;
 }
-
 
 .nav-links li a:hover,
 .nav-links li a.active {
-  color: #ec8806; /* kapag hover o active, magiging orange-brown ang kulay ng link */
+  color: #ec8806;
   transform: scale(1.05);
 }
 
-/* --- Hero Section (yung malaking banner na may background image) --- */
+/* Hamburger Menu (hidden by default) */
+.menu-toggle {
+  display: none;
+  color: #ec8806;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* --- Hero Section --- */
 .hero {
-  height: 100vh; /* buong taas ng screen (viewport height) */
+  height: 100vh;
   background: url('images/coffee-bg7.jpg') no-repeat center center/cover;
-  display: flex; /* ginagamit ang flex layout para i-center ang laman */
-  align-items: center; /* vertical centering ng content */
-  justify-content: center; /* horizontal centering ng content */
-  text-align: center; /* gitna ang text alignment */
-  color: #ec8806; /* puti ang kulay ng text */
-  position: relative; /* para magamit ang ::before pseudo-element sa loob */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ec8806;
+  position: relative;
+  padding: 0 20px;
 }
 
-/* --- Dark Overlay sa Hero --- */
 .hero::before {
-  content: ""; /* gumagawa ng empty element overlay */
-  position: absolute; /* absolute position para matakpan ang buong hero background */
-  top: 0; /* simula sa itaas */
-  left: 0; /* simula sa kaliwa */
-  width: 100%; /* buong lapad */
-  height: 100%; /* buong taas */
-  background: rgba(0, 0, 0, 0.3); /* semi-transparent black overlay para luminaw ang text */
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-/* --- Hero Content (text at button) --- */
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 100%; /* gawin 100% para hindi mag-wrap agad */
-  width: 85%;
-  padding: 0px 32px 100px 32px;
-  display: inline-block; 
+  max-width: 90%;
+  padding: 0 20px;
 }
 
 .hero h1 {
-  font-size: 5rem; /* laki ng main title */
-  margin-bottom: 10px; /* kaunting pagitan sa ibaba ng title */
-  letter-spacing: 3px; /* dagdag ng kaunting space sa pagitan ng letters */
+  font-size: 4.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
 }
 
 .hero p {
-  font-size: 1.5rem; /* laki ng paragraph text sa hero */
-  margin-bottom: 25px; /* space sa pagitan ng paragraph at button */
+  font-size: 1.4rem;
+  margin-bottom: 25px;
   font-weight: 600;
 }
 
-/* --- Button Design --- */
 .btn {
-  display: inline-block; /* inline pero puwedeng lagyan ng width at height */
-  background: #cfcfcfd3; /* kulay abong background */
-  color: #ec8806; /* puting text */
-  padding: 12px 28px; /* espasyo sa loob ng button */
-  border-radius: 25px; /* bilugan ang gilid ng button */
-  text-decoration: none; /* walang underline */
-  font-weight: 500; /* medyo bold text */
-  transition: background 0.3s ease; /* smooth transition kapag hover */
-  margin-top: 40px;
+  display: inline-block;
+  background: #cfcfcfd3;
+  color: #ec8806;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  margin-top: 20px;
 }
 
 .btn:hover {
-  background: #8a8a8a; /* mas madilim na gray kapag hover */
+  background: #8a8a8a;
 }
 
-section{
+/* --- Sections --- */
+section {
   padding: 100px 50px;
   text-align: center;
 }
 
-.container{
+.container {
   max-width: 1000px;
   margin: 0 auto;
 }
+
+/* --- About Section --- */
 .about {
-  text-align: center;
-  padding: 100px 50px;
-  background-color: #fffaf3; /* optional light beige background for cozy look */
+  background-color: #fffaf3;
 }
 .about h2 {
   font-size: 2.5rem;
@@ -139,20 +140,78 @@ section{
 }
 .about p {
   max-width: 700px;
-  margin: 0 auto; /* ito ang naglalagay sa gitna horizontally */
+  margin: 0 auto;
   line-height: 1.8;
   font-size: 1.1rem;
   color: #444;
 }
-.gallery h2{
-  margin-top: 0; /* tinanggal extra spacing sa taas */
-  font-size: 2.5rem; /* mas maayos na size para balance */
-  color: #ec8806; /* pareho ng About heading color for consistency */
-  margin-bottom: 30px;
+
+/* --- Menu Section --- */
+.menu {
+  background-color: #fffaf5;
+  padding: 150px 50px;
   text-align: center;
+}
+.menu h2 {
+  font-size: 36px;
+  color: #3e2723;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+.menu-category {
+  margin-bottom: 60px;
+}
+.menu-category h3 {
+  font-size: 28px;
+  color: #d2691e;
+  margin-bottom: 30px;
+}
+.menu-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.menu-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 280px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.menu-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+.menu-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.menu-info {
+  padding: 15px;
+}
+.menu-info h4 {
+  color: #3e2723;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.menu-info p {
+  color: #d2691e;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* --- Gallery --- */
+.gallery h2 {
+  font-size: 2.5rem;
+  color: #ec8806;
+  margin-bottom: 30px;
   letter-spacing: 1px;
 }
-.gallery-grid{
+.gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 20px;
@@ -164,14 +223,12 @@ section{
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.gallery-grid img:hover{
+.gallery-grid img:hover {
   transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-.contact {
-  background-color: #fff;
-}
 
+/* --- Contact --- */
 .contact h2 {
   font-size: 2.2rem;
   color: #ec8806;
@@ -182,16 +239,15 @@ section{
   color: #444;
   margin-bottom: 8px;
 }
-
 form {
   display: flex;
-  flex-direction: column; /* ginagawa patayo ang layout ng mga element sa form */
-  align-items: center; /* gitna ang mga input at button */
+  flex-direction: column;
+  align-items: center;
 }
 form input,
 form textarea {
   width: 80%;
-  max-width: 600px; /* mas malapad para maayos tingnan */
+  max-width: 600px;
   margin: 10px 0;
   padding: 12px;
   border: 1px solid #ccc;
@@ -203,17 +259,17 @@ form textarea {
   resize: none;
 }
 form .btn {
-  font-weight: 500;
   background: #ec8806;
-  color: #000000;
+  color: #000;
   padding: 12px 40px;
-  font-size: 1rem;
   border: none;
   border-radius: 25px;
   margin-top: 15px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
+
+/* --- Footer --- */
 footer {
   background-color: #000;
   color: #fff;
@@ -222,91 +278,135 @@ footer {
   font-size: 0.9rem;
 }
 
-.menu {
-  background-color: #fffaf5;
-  padding: 80px 0;
-  text-align: center;
-}
-
-.menu h2 {
-  font-size: 36px;
-  color: #3e2723;
-  margin-bottom: 40px;
-  font-weight: 700;
-}
-
-.menu-category {
-  margin-bottom: 60px;
-}
-
-.menu-category h3 {
-  font-size: 28px;
-  color: #d2691e;
-  margin-bottom: 30px;
-}
-
-.menu-items {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.menu-item {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 280px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.menu-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.menu-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.menu-info {
-  padding: 15px;
-}
-
-.menu-info h4 {
-  color: #3e2723;
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.menu-info p {
-  color: #d2691e;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-/* --- Responsive Design (para sa mobile devices) --- */
-@media (max-width: 768px) { /* kapag 768px pababa ang screen width (tablet o phone) */
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {
   nav {
-    flex-direction: column; /* gawing patayo (column) ang layout ng navbar */
-    padding: 15px 20px; /* bawasan ng kaunti ang padding */
+    padding: 15px 25px;
+  }
+
+  .menu-toggle {
+    display: block;
   }
 
   .nav-links {
-    flex-direction: column; /* gawing patayo rin ang links */
-    align-items: center; /* gitnang alignment ng mga link */
-    gap: 10px; /* mas maliit na pagitan */
-    padding-top: 10px; /* dagdag na espasyo sa taas */
+    display: none;
+    flex-direction: column;
+    background: #1a1a1a;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 220px;
+    text-align: right;
+    padding: 25px;
+    border-radius: 0 0 0 10px;
+  }
+
+  nav.active .nav-links {
+    display: flex;
+  }
+
+  .menu-items {
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero h1 {
-    font-size: 2.2rem; /* paliitin ang title text sa mobile */
+    font-size: 2.5rem;
+  }
+}
+
+/* Hamburger icon */
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #ec8806;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate to "X" when active */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 600px) {
+  .hero {
+    height: auto;
+    padding: 120px 10px 80px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
   }
 
   .hero p {
-    font-size: 1rem; /* paliitin din ang paragraph text */
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 0.9em;
+    padding: 8px 20px;
+  }
+
+  section {
+    padding: 70px 25px;
+  }
+
+  .menu-item {
+    width: 90%;
+  }
+
+  form input,
+  form textarea {
+    width: 95%;
+  }
+}
+@media (max-width: 900px) {
+  nav {
+    padding: 15px 25px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #1a1a1a;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 230px;
+    padding: 25px;
+    border-radius: 0 0 0 10px;
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
   }
 }

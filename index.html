@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Amore Café</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="images/favicon2.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amore Café</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/favicon2.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body>
   <!-- Navbar -->
   <nav>
-    <div class="logo">☕ Amore Café</div>
-    <ul class="nav-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <div class="logo">Amore Café</div>
 
-  <!-- Hero Section -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+  <!-- Hero -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>Welcome to  Amore Café</h1>
+      <h1>Welcome to Amore Café</h1>
       <p>Where every cup tells a story.</p>
       <a href="menu.html" class="btn">View Menu</a>
     </div>
   </section>
 
-  <!-- About Section -->
-<section id="about" class="about">
-  <div class="container">
+  <!-- About -->
+  <section id="about" class="about">
     <h2>About Us</h2>
-    <p>
-      At <strong>Amore Café</strong>, we believe that every cup of coffee tells a story — a story of passion, warmth, and connection. 
-      Our café was founded with the simple dream of creating a cozy place where people can relax, share moments, and enjoy handcrafted beverages made with love.
-    </p>
-    <p>
-      We take pride in serving freshly brewed coffee, delicious pastries, and comforting meals in a peaceful and inviting atmosphere. 
-      Whether you're catching up with friends, studying, or just enjoying some quiet time, Amore Café offers the perfect spot to make every visit special. 
-      Experience the aroma, the taste, and the joy — only at Amore Café.
-    </p>
-  </div>
-</section>
+    <p>At <strong>Amore Café</strong>, we believe that every cup of coffee tells a story — a story of passion, warmth, and connection.</p>
+    <p>Our café was founded with the dream of creating a cozy place where people can relax, share moments, and enjoy handcrafted beverages made with love.</p>
+  </section>
 
-
-
-
-  <!-- Gallery Section -->
-<section id="gallery" class="gallery">
-  <div class="container">
+  <!-- Gallery -->
+  <section id="gallery" class="gallery">
     <h2>Gallery</h2>
     <div class="gallery-grid">
       <img src="images/gallery1.jpg" alt="gallery1">
@@ -60,78 +55,27 @@
       <img src="images/gallery3.jpg" alt="gallery3">
       <img src="images/gallery4.jpg" alt="gallery4">
     </div>
-  </div>
-</section>
+  </section>
 
-   <!-- Contact Section -->
-   <section id="contact" class="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>📍 123 Coffee Street, Barangka, Marikina City</p>
-      <p>📞 0912 345 6789</p>
-      <p>✉️ amorecafe@gmail.com</p>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="Submit" class="btn">Send Message</button>
-      </form>
-    </div>
-   </section>
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>📍 123 Coffee Street, Barangka, Marikina City</p>
+    <p>📞 0912 345 6789</p>
+    <p>✉️ amorecafe@gmail.com</p>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
 
-   <!-- Footer -->
-    <footer>
-      <p>© 2025 Amore Café. All Rights Reserved.</p>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Amore Café. All Rights Reserved.</p>
+  </footer>
 
-
-    <script>
-  // Smooth scrolling only for internal links (those starting with #)
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    const href = link.getAttribute('href');
-
-    // If the link is for a section within the page
-    if (href.startsWith('#')) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-
-        window.scrollTo({
-          top: targetSection.offsetTop - 60,
-          behavior: 'smooth'
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(nav => nav.classList.remove('active'));
-        this.classList.add('active');
-      });
-    }
-  });
-
-  // Update active link habang nag-i-scroll
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-links a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
-
-
-
+  <script src="script.js"></script>
 </body>
 </html>
