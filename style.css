@@ -13,7 +13,7 @@ html {
 
 /* --- Navbar --- */
 nav {
-  width: 180vh; /* ginagawa ang lapad ng navbar na 210 viewport height units (medyo mali ito — dapat 100vw kung gusto mo full width) */
+  width: 200vh; /* ginagawa ang lapad ng navbar na 210 viewport height units (medyo mali ito — dapat 100vw kung gusto mo full width) */
   background-color: #000000; /* itim ang background ng navbar */
   padding: 20px 50px; /* nagbibigay ng espasyo sa loob — 20px top-bottom, 50px left-right */
   display: flex; /* ginagamit ang flexbox layout para madaling i-align ang items */
