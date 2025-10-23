@@ -1,3 +1,55 @@
+// ====== MENU CAROUSEL - Show 3 items at a time ======
+
+document.querySelectorAll('.menu-category').forEach(category => {
+  const menuItemsContainer = category.querySelector('.menu-items');
+  const items = category.querySelectorAll('.menu-item');
+  const prevBtn = category.querySelector('.prev-btn');
+  const nextBtn = category.querySelector('.next-btn');
+  
+  let currentIndex = 0;
+  const itemsToShow = 3;
+  const totalItems = items.length;
+
+  // Function to update visible items
+  function updateVisibleItems() {
+    // Hide all items
+    items.forEach(item => {
+      item.style.display = 'none';
+    });
+    
+    // Show current set of 3 items
+    for (let i = currentIndex; i < currentIndex + itemsToShow && i < totalItems; i++) {
+      if (items[i]) {
+        items[i].style.display = 'block';
+      }
+    }
+    
+    // Update button states
+    prevBtn.classList.toggle('hidden', currentIndex === 0);
+    nextBtn.classList.toggle('hidden', currentIndex + itemsToShow >= totalItems);
+  }
+
+  // Next button click
+  nextBtn?.addEventListener('click', () => {
+    if (currentIndex + itemsToShow < totalItems) {
+      currentIndex++;
+      updateVisibleItems();
+    }
+  });
+
+  // Previous button click
+  prevBtn?.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateVisibleItems();
+    }
+  });
+
+  // Initialize
+  updateVisibleItems();
+});
+
+// Keep your existing navigation code (toggleMenu, smooth scroll, etc.)
 // Toggle menu (for mobile)
 function toggleMenu() {
   const navLinks = document.querySelector(".nav-links");
